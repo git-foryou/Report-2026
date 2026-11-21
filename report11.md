@@ -30,3 +30,29 @@
        	}
        
        }
+
+
+2.
+ - 변수에 저장되있는 정수값을 실수값으로 바꾸었고, 이를 출력하기 위한 코드를 일부 수정했습니다.
+
+       #include <stdio.h>
+       
+       
+       
+       int add(float a, float b) {
+       
+       	return a + b;
+       
+       }
+       
+       
+       
+       void main() {
+       
+       	float a = 11.3f, b = 22.1f;
+       
+       	float (*sum)(float, float) = add;
+       
+       	printf("%.2f\n", sum(a, b));
+       
+       }
