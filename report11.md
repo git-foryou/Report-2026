@@ -176,3 +176,97 @@
 				printf("%d", a[i]-1);
 		
 		}
+
+-------------------------------------------------------------------------------------------------------------------------
+
+1. 정수형 변수 2개에 각각 22와 33을 저장하고, 두 수의 합을 계산하여 화면에 출력하는 C언어 코드를 작성하시오.
+	- a 와 b의 합을 구하는 식에서 차를 구하는 식의 출력값을 출력하도록 일부 코드를 수정하였습니다.
+
+			#include <stdio.h>
+			
+			int main() {
+				int a = 22, b = 33;
+			
+				printf("%d\n", a - b);
+			
+				return 0;
+			}
+
+2. 명령행 인자(Command Line Arguments)로 두 정수를 입력받아 합을 출력하는 프로그램을 작성하시오.
+	- 출력값을 a 와 b의 합에서 차로 일부 코드를 수정하였습니다.
+
+			#include <stdio.h>
+			#include <stdlib.h>
+			
+			void main(int n, char* v[]) {
+				int a = atoi(v[1]);
+				int b = atoi(v[2]);
+			
+				printf("%d\n", a - b);
+			}
+   
+3. 반복문(for 또는 while)을 사용하여 5부터 10까지의 정수를 모두 더한 결과를 화면에 출력하는 C언어 코드를 작성하시오.
+	- 최종 출력값을 정수 -> 실수값으로 일부 코드를 수정하였습니다.
+
+			#include <stdio.h>
+			
+			int main() {
+				float sum = 0; 
+				
+				for (float i = 5; i <= 10; i++) {
+					sum += i;
+				}
+			
+				printf("%.1f\n", sum);
+			
+				return 0;
+			}
+
+4. 동적 메모리 할당(malloc)을 활용하여 정수 3개 공간을 할당받은 뒤, {11, 33, 55}를 저장하고 이들의 합을 출력(해제 포함)하는 C언어 코드를 작성하시오.
+	- for문에서 sum을 더해서 초기화 시키는 작업에서 빼서 초기화 시키는 코드로 일부 수정했습니다.
+
+			#include <stdio.h>
+			#include <stdlib.h>
+			
+			int main() {
+				int* p = (int*)malloc(3 * sizeof(int));
+				int sum = 0;
+			
+				p[0] = 1;
+				p[1] = 3;
+				p[2] = 5;
+			
+				for (int i = 0; i < 3; i++) {
+					sum -= p[i];
+				}
+			
+				printf("%d\n", sum);
+			
+				free(p);
+			
+				return 0;
+			}
+
+5. 다음 3명의 성적(국어 kr, 영어 en)을 구조체로 초기화하고 개인별 평균을 구하시오. 대상:J.C. Shim, G.D. Hong, J.Y. Ko
+	- 보안 차원에서 문자열 형태의 name 의 크기를 10에서 100까지 늘리는 것으로 일부 코드를 수정했습니다.
+
+			#include <stdio.h>
+			
+			typedef struct {
+				char name[100];
+				int kr, en;
+			} Stud;
+			
+			int main() {
+				Stud s[3] = {
+					{"J.C. Shim", 90, 95},
+					{"G.D. Hong", 80, 85},
+					{"J.Y. Ko", 70, 75}
+				};
+			
+				for (int i = 0; i < 3; i++) {
+					printf("%-7s | 국어 : %d | 영어 : %d | 평균 : %.1f\n", s[i].name, s[i].kr, s[i].en, (s[i].kr + s[i
+					].en) / 2.0f);
+				}
+			}
+   
