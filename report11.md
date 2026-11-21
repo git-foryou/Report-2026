@@ -56,3 +56,74 @@
        	printf("%.2f\n", sum(a, b));
        
        }
+
+3. 
+ - 3행 4열 크기의 행렬 중 3행 4열에 있는 값을 0으로 바꾼 후 합을 진행했습니다.
+       #include <stdio.h>
+       
+       
+       
+       void main() {
+       
+       	int a[3][4] = { 1, 2, 3, 4,
+                        5, 6, 7, 8,
+                       9, 10, 11, 0 };
+       
+       	int i, j, s = 0;
+       
+       
+       
+       	for (i = 0; i < 3; i++)
+       
+       		for (j = 0; j < 4; j++)
+       
+       			s += a[i][j];
+       
+       
+       
+       	printf("%d\n", s);
+       
+       }
+
+4.
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+
+struct LIST {
+
+	int k, e, m;
+
+};
+
+5.
+ - struct 구조체 이름을 S에서 LIST로 바꿔서 일부 코드를 수정하였습니다.
+   
+       #define _CRT_SECURE_NO_WARNINGS
+       
+       #include <stdio.h>
+       
+       
+       
+       struct LIST {
+       
+       	int k, e, m;
+       
+       };
+       
+       
+       
+       void main() {
+       
+       	struct LIST a[2] = { {80, 90, 85}, {70, 75, 95} };
+       
+       	FILE* p = fopen("my.bin", "wb");
+       
+       	fwrite(a, sizeof(struct LIST), 2, p);
+       
+       	fclose(p);
+       
+       }
