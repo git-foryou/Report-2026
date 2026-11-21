@@ -86,20 +86,6 @@
        }
 
 4.
-
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-
-
-
-struct LIST {
-
-	int k, e, m;
-
-};
-
-5.
  - struct 구조체 이름을 S에서 LIST로 바꿔서 일부 코드를 수정하였습니다.
    
        #define _CRT_SECURE_NO_WARNINGS
@@ -127,3 +113,38 @@ struct LIST {
        	fclose(p);
        
        }
+
+5. 
+ - 출력되는 값의 소수점 자릿수가 2 -> 1번째 자리까지 나타내는 것으로 일부 코드가 수정되었습니다.
+
+		#define _CRT_SECURE_NO_WARNINGS
+		
+		#include <stdio.h>
+		
+		 
+		
+		struct S {
+		
+		int k, e, m;
+		
+		};
+		
+		 
+		
+		void main() {
+		
+		struct S a[2];
+		
+		FILE *p = fopen("my.bin", "rb");
+		
+		fread(a, sizeof(struct S), 2, p);
+		
+		fclose(p);
+		
+		 
+		
+		printf("개인1: %.1f, 개인2: %.1f\n", (a[0].k + a[0].e + a[0].m) / 3.0, (a[1].k + a[1].e + a[1].m) / 3.0);
+		
+		printf("과목1: %.1f, 과목2: %.1f, 과목3: %.1f\n", (a[0].k + a[1].k) / 2.0, (a[0].e + a[1].e) / 2.0, (a[0].m + a[1].m) / 2.0);
+		
+		}
